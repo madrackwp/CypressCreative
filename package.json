@@ -1,0 +1,19 @@
+{
+  "name": "cypresscreative",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cy:run": "cypress run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^8.7.0"
+  },
+  "dependencies": {
+    "cypress-plugin-snapshots": "^1.4.4"
+  }
+}
