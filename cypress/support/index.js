@@ -19,3 +19,4 @@ import './commands'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 import 'cypress-plugin-snapshots/commands';
+import '@percy/cypress';

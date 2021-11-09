@@ -76,7 +76,10 @@
 - The test will fail if there is a mismatch in the images
 - If the new snapshot is correct, it will have to be over-ridden in the cypress GUI instead
 - Take note that this test takes an image of the first blogpost entry on the main page, whenever there are new blog posts added, it may generate an error as the snapshots will no longer be the same
+- At the top of the test file, there is an `imageConfig` json object that is used to define the percentage threshold the image has to match before the test fail. Adjust this percentage to allow changes in the blogpost pass the tests
 - All snapshots are saved under `cypress\integration\blog_site_tests\__image_snapshots__`
+- There will come a time where there is a large difference in the screenshots due to large changes and this is desired. We can use the command `npx cypress run --env updateSnapshots=true --spec "cypress\integration\blog_site_tests\snapShot.js"` to ensure the screenshots are updated
+- To update ALL snapshots, use: `npx cypress run --env updateSnapshots=true` instead
 
 ---
 
