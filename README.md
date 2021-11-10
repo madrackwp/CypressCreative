@@ -1,5 +1,63 @@
 # Cypress UPD Documentation
 
+## What is CypressIO?
+
+- Cypress is a end to end testing framework for web applications
+- Promotes Test Driven Development (TDD) instead of the more frequently used Behavior Driven Development (BDD)
+- [Read up more here](https://docs.cypress.io/guides/overview/why-cypress)
+
+## How to Use:
+
+### Writing a test
+
+- All test files are written as `spec.js` files (There are other file extensions that can be used)
+- All test files should be written in the integration folder
+- Folders can be used
+
+### Structure of a test:
+
+1. Arrange -> Set up the environment where the user will start out
+2. Act -> Simulate how the user will interact with the page
+3. Assert -> Check if conditions are met in order to pass or fail
+
+Refer to the `sample_spec.js` file in the integration directory as an example
+
+---
+
+## Running Tests:
+
+### Using GUI:
+
+- type `$npm run cypress:open` in the console
+- It is an intuitive GUI that shows the integration directory
+- You can simply run test by opening the spec files you need
+- To ensure this works, you have to ensure that the script is defined in the `package.json` file: `"cypress:open" : "cypress open"`
+
+### Using CLI:
+
+- To run all test in the integration directory: `$npm run cy:run -- --spec "cypress/integration/*"`
+- We can also specify which spec file to run specifically using: `$npm run cy:run -- --spec "cypress/integration/sample_spec.js/"`
+- Once again, ensure `"cy:run": "cypress run"` is defined the `package.json` under scripts
+
+### Videos and Screenshots:
+
+- Screenshots, by default, will be taken whenever there is a fail in a test
+- The screenshot will be saved under the screenshot folder in the cypress directory
+- To disable this, go to `cypress.json` and ensure that `screenShotOnRunFailure` is set to `false`
+- Take note that screenshots are not taken automatically during tests done in the GUI (cypress open). However, screenshots can be taken if `cy.screenshot()` command is used in your `spec.js` file
+- Screenshots of previous tests are automatically wiped unless `trashAssetsBeforeRuns` is set to `false` in the `cypress.json` file
+
+Videos:
+
+- Videos of your test will be recorded and saved to the video directory by default
+- Like screenshots, videos are only taken using the CLI(cypress run) and not the GUI(cypress open)
+- This feature can be turned off by making sure `video` is set to `false` in the `cypress.json` file
+- Screenshots of previous tests are automatically wiped unless `trashAssetsBeforeRuns` is set to `false` in the `cypress.json` file
+- Changing of video encoding can be done in the cypress.json file
+- Upload of video can be done for specs that failed setting `videoUploadOnPasses` to `false` in `cypress.json`
+
+---
+
 ## Tests for UPD covered:
 
 1. Ensuring that all endpoints are working when the webpage loads (`check-backend.js`)
@@ -80,64 +138,6 @@
 - All snapshots are saved under `cypress\integration\blog_site_tests\__image_snapshots__`
 - There will come a time where there is a large difference in the screenshots due to large changes and this is desired. We can use the command `npx cypress run --env updateSnapshots=true --spec "cypress\integration\blog_site_tests\snapShot.js"` to ensure the screenshots are updated
 - To update ALL snapshots, use: `npx cypress run --env updateSnapshots=true` instead
-
----
-
-## What is CypressIO?
-
-- Cypress is a end to end testing framework for web applications
-- Promotes Test Driven Development (TDD) instead of the more frequently used Behavior Driven Development (BDD)
-- [Read up more here](https://docs.cypress.io/guides/overview/why-cypress)
-
-## How to Use:
-
-### Writing a test
-
-- All test files are written as `spec.js` files (There are other file extensions that can be used)
-- All test files should be written in the integration folder
-- Folders can be used
-
-### Structure of a test:
-
-1. Arrange -> Set up the environment where the user will start out
-2. Act -> Simulate how the user will interact with the page
-3. Assert -> Check if conditions are met in order to pass or fail
-
-Refer to the `sample_spec.js` file in the integration directory as an example
-
----
-
-## Running Tests:
-
-### Using GUI:
-
-- type `$npm run cypress:open` in the console
-- It is an intuitive GUI that shows the integration directory
-- You can simply run test by opening the spec files you need
-- To ensure this works, you have to ensure that the script is defined in the `package.json` file: `"cypress:open" : "cypress open"`
-
-### Using CLI:
-
-- To run all test in the integration directory: `$npm run cy:run -- --spec "cypress/integration/*"`
-- We can also specify which spec file to run specifically using: `$npm run cy:run -- --spec "cypress/integration/sample_spec.js/"`
-- Once again, ensure `"cy:run": "cypress run"` is defined the `package.json` under scripts
-
-### Videos and Screenshots:
-
-- Screenshots, by default, will be taken whenever there is a fail in a test
-- The screenshot will be saved under the screenshot folder in the cypress directory
-- To disable this, go to `cypress.json` and ensure that `screenShotOnRunFailure` is set to `false`
-- Take note that screenshots are not taken automatically during tests done in the GUI (cypress open). However, screenshots can be taken if `cy.screenshot()` command is used in your `spec.js` file
-- Screenshots of previous tests are automatically wiped unless `trashAssetsBeforeRuns` is set to `false` in the `cypress.json` file
-
-Videos:
-
-- Videos of your test will be recorded and saved to the video directory by default
-- Like screenshots, videos are only taken using the CLI(cypress run) and not the GUI(cypress open)
-- This feature can be turned off by making sure `video` is set to `false` in the `cypress.json` file
-- Screenshots of previous tests are automatically wiped unless `trashAssetsBeforeRuns` is set to `false` in the `cypress.json` file
-- Changing of video encoding can be done in the cypress.json file
-- Upload of video can be done for specs that failed setting `videoUploadOnPasses` to `false` in `cypress.json`
 
 ---
 
