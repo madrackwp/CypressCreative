@@ -1,4 +1,4 @@
-# Cypress UPD Documentation
+# Cypress Creative UPD Documentation
 
 ## What is CypressIO?
 
